@@ -12,6 +12,9 @@ export class TodoPresenter {
   content: string;
 
   @Expose()
+  completed: boolean;
+
+  @Expose()
   createdAt: Date;
 
   @Expose()

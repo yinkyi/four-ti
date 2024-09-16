@@ -12,7 +12,6 @@ import {
 import { FourTiLogService } from '@app/four-ti-log';
 import { ConfigService } from '@nestjs/config';
 import 'reflect-metadata';
-import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
   const configService = new ConfigService();

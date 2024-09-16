@@ -8,8 +8,8 @@ import { GetTodoDto } from 'apps/todo-app/src/api/todo/dto/get-todo.dto';
 export class TodoService {
   constructor(private readonly repo: TodoRepository) {}
 
-  async create(createTodoDto: CreateTodoDto) {
-    return await this.repo.create(createTodoDto);
+  async create(createTodoDto: CreateTodoDto, userId: string) {
+    return await this.repo.create({ ...createTodoDto, userId });
   }
 
   async findAll(getTodoDto: GetTodoDto) {

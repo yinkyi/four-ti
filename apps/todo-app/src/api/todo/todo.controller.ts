@@ -21,10 +21,14 @@ import { REQUEST } from '@nestjs/core';
 import { Serialize } from '../../common/interceptors/serialize.interceptor';
 import { TodoPresenter } from './presenters/todo.presenter';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { GetUser } from '../../common/decorator/get-user.decorator';
+import { AuthUserI } from '@app/auth0/interface';
 
-@Controller('todo')
+@Controller('todos')
 @UseGuards(AuthGuard('jwt'))
 @Serialize(TodoPresenter)
+@ApiBearerAuth()
 export class TodoController extends AbstractController {
   constructor(
     @Inject(REQUEST)
@@ -35,8 +39,11 @@ export class TodoController extends AbstractController {
   }
 
   @Post()
-  async create(@Body() createTodoDto: CreateTodoDto) {
-    return await this.todoService.create(createTodoDto);
+  async create(
+    @Body() createTodoDto: CreateTodoDto,
+    @GetUser() user: AuthUserI,
+  ) {
+    return await this.todoService.create(createTodoDto, user.userId);
   }
 
   @Get()

@@ -1,6 +1,6 @@
 export interface CreateToDoInterface {
   title: string;
-  content: string;
+  content?: string;
   userId: string;
 }
 

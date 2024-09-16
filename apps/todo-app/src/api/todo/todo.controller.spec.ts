@@ -10,15 +10,27 @@ import {
 } from '../../common/controller/mock-abstract-controller';
 import { AbstractController } from '../../common/controller/abstract-controller';
 import { GetTodoDto } from 'apps/todo-app/src/api/todo/dto/get-todo.dto';
+import { AuthUserI } from '@app/auth0/interface';
 
 describe('TodoController', () => {
   let controller: TodoController;
   let service: TodoService;
 
+  const user: AuthUserI = {
+    userId: 'ec74f929-12e6-5248-8aa0-2d6f1e0f4e6c',
+    roles: '',
+    auth0UserId: 'google-oauth2|107163367946670487684',
+    iss: '',
+    sub: '',
+    iat: 0,
+    exp: 0,
+    scope: '',
+    azp: '',
+  };
+
   const createDto: CreateTodoDto = {
     title: 'Test Todo',
     content: 'Test Content',
-    userId: '1ac1700d-6634-458a-9ea5-d91d8f9703ce',
   };
 
   const todoPresenter: Todo = {
@@ -81,9 +93,9 @@ describe('TodoController', () => {
   describe('create', () => {
     it('should create todo and should call todo service create', async () => {
       // Call the getData method of the controller
-      const result = await controller.create(createDto);
+      const result = await controller.create(createDto, user);
       expect(result).toEqual(todoPresenter);
-      expect(service.create).toHaveBeenCalledWith(createDto);
+      expect(service.create).toHaveBeenCalledWith(createDto, user.userId);
     });
   });
 

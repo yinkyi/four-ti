@@ -30,7 +30,7 @@ describe('TodoRepository', () => {
       const createDto: CreateToDoInterface = {
         title: 'assignment',
         content: 'Four-ti Todo assignment',
-        userId: '1ac1700d-6634-458a-9ea5-d91d8f9703ce',
+        userId: 'ec74f929-12e6-5248-8aa0-2d6f1e0f4e6c',
       };
       const createdTodo = await repository.create(createDto);
       todo = createdTodo;
@@ -57,7 +57,7 @@ describe('TodoRepository', () => {
       const createDto: CreateToDoInterface = {
         title: 'assignment',
         content: 'Four-ti Todo assignment',
-        userId: '1ac1700d-6634-458a-9ea5-d91d8f9703cf',
+        userId: 'ec74f929-12e6-5248-8aa0-2d6f1e0f4e6c',
       };
       try {
         await repository.create(createDto);

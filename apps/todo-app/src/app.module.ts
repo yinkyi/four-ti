@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { RepositoryModule } from '@app/repository';
 import { TodoModule } from './api/todo/todo.module';
 import { Auth0Module } from '@app/auth0';
+import { UserModule } from './api/user/user.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { Auth0Module } from '@app/auth0';
     Auth0Module,
     RepositoryModule,
     TodoModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

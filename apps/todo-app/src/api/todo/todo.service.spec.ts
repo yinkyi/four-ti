@@ -5,15 +5,27 @@ import { Todo } from '@prisma/client';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { GetTodoDto } from 'apps/todo-app/src/api/todo/dto/get-todo.dto';
+import { AuthUserI } from '@app/auth0/interface';
 
 describe('TodoService', () => {
   let repository: TodoRepository;
   let service: TodoService;
 
+  const user: AuthUserI = {
+    userId: 'ec74f929-12e6-5248-8aa0-2d6f1e0f4e6c',
+    roles: '',
+    auth0UserId: 'google-oauth2|107163367946670487684',
+    iss: '',
+    sub: '',
+    iat: 0,
+    exp: 0,
+    scope: '',
+    azp: '',
+  };
+
   const createDto: CreateTodoDto = {
     title: 'Test Todo',
     content: 'Test Content',
-    userId: '1ac1700d-6634-458a-9ea5-d91d8f9703ce',
   };
   const mockTodos: Todo[] = [
     {
@@ -98,9 +110,11 @@ describe('TodoService', () => {
     it('should call create', () => {
       repository.create = jest.fn().mockResolvedValue(createDto);
 
-      return repository.create(createDto).then((returnedM) => {
-        expect(returnedM).toEqual(createDto);
-      });
+      return repository
+        .create({ ...createDto, userId: user.userId })
+        .then((returnedM) => {
+          expect(returnedM).toEqual(createDto);
+        });
     });
   });
 
