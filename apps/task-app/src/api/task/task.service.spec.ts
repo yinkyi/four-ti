@@ -155,7 +155,7 @@ describe('TaskService', () => {
         title: 'Test Task1',
         route: '/mock-url',
       };
-      const result = await service.findAll(getDto);
+      const result = await service.findAll(getDto, user.userId);
       expect(Array.isArray(result.items)).toBe(true);
       expect(result.meta).toBeDefined();
       expect(result.items).toBeDefined();

@@ -29,11 +29,10 @@
 ## Installation using docker
 
 ```bash
+$ npm install
 $ npm run prisma:generate
 $ make start
 $ make build
-$ npm install
-
 ```
 
 ## Migration

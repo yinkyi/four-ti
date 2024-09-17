@@ -122,8 +122,8 @@ describe('TaskController', () => {
         title: 'Test Task',
         route: 'http://localhost/mock-url',
       };
-      await controller.findAll(getDto);
-      expect(service.findAll).toHaveBeenCalledWith(getDto);
+      await controller.findAll(getDto, user);
+      expect(service.findAll).toHaveBeenCalledWith(getDto, user.userId);
     });
   });
 
