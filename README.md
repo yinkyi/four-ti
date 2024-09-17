@@ -47,6 +47,7 @@ $ npm install
 
 ## Test
 
+```bash
 $ npm run test
 
 ```
@@ -155,10 +156,11 @@ This project involves developing a task management application with authenticati
 
 Jest is used for backend testing. To run the tests:
 
-
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+```
 
 ```
 
