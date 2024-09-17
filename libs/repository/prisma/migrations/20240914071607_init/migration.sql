@@ -12,7 +12,7 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Todo" (
+CREATE TABLE "Task" (
     "id" UUID NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT,
@@ -22,11 +22,11 @@ CREATE TABLE "Todo" (
     "updated_at" TIMESTAMP(3) NOT NULL,
     "deleted_at" TIMESTAMP(3),
 
-    CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "Todo" ADD CONSTRAINT "Todo_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Task" ADD CONSTRAINT "Task_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

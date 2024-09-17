@@ -1,14 +1,33 @@
-import { PasswordLessConnectionType, SendType } from '@app/auth0/auth0.enum';
+import {
+  AuthConnectionType,
+  GrantType,
+  PasswordLessConnectionType,
+  SendType,
+} from '@app/auth0/auth0.enum';
 
 export interface ClinetKeyInterface {
   client_id: string;
-  client_secret: string;
+  client_secret?: string;
 }
 
 export interface PasswordlessStartInterface extends ClinetKeyInterface {
   connection: PasswordLessConnectionType;
   email: string;
   send: SendType;
+}
+
+export interface SignUpInterface extends ClinetKeyInterface {
+  connection: AuthConnectionType;
+  email: string;
+  password: string;
+  name: string;
+}
+export interface LoginInterface extends ClinetKeyInterface {
+  grant_type: GrantType;
+  connection: AuthConnectionType;
+  username: string;
+  password: string;
+  audience: string;
 }
 
 export interface PasswordlessAuthTokenInterface extends ClinetKeyInterface {

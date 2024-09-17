@@ -7,8 +7,10 @@ import {
   CreateUserInterface,
   CreateUserResponseInterface,
   IdTokenUserI,
+  LoginInterface,
   PasswordlessAuthTokenInterface,
   PasswordlessStartInterface,
+  SignUpInterface,
 } from './interface';
 
 @Injectable()
@@ -34,15 +36,9 @@ export class Auth0Service {
 
   async passwordlessStart(passwordlessStart: PasswordlessStartInterface) {
     return this.handleRequest(
-      client.post(
-        'passwordless/start',
-        {
-          ...passwordlessStart,
-        },
-        {
-          baseURL: process.env.AUTH0_DOMAIN_URL,
-        },
-      ),
+      client.post('passwordless/start', {
+        ...passwordlessStart,
+      }),
     );
   }
 
@@ -140,6 +136,35 @@ export class Auth0Service {
       client.post(`users/${assignRole.auth0UserId}/roles`, {
         roles,
       }),
+    );
+  }
+
+  async signup(signUpInterface: SignUpInterface) {
+    return this.handleRequest(
+      client.post(
+        'dbconnections/signup',
+        {
+          ...signUpInterface,
+        },
+        {
+          baseURL: process.env.AUTH0_DOMAIN_URL,
+        },
+      ),
+    );
+  }
+
+  async login(loginInterface: LoginInterface) {
+    return this.handleRequest(
+      client.post(
+        'oauth/token',
+        {
+          ...loginInterface,
+          scope: 'openid profile email',
+        },
+        {
+          baseURL: process.env.AUTH0_DOMAIN_URL,
+        },
+      ),
     );
   }
 

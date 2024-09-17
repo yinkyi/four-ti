@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { RepositoryModule } from '@app/repository';
-import { TodoModule } from './api/todo/todo.module';
+import { TaskModule } from './api/task/task.module';
 import { Auth0Module } from '@app/auth0';
 import { UserModule } from './api/user/user.module';
 
@@ -15,7 +15,7 @@ import { UserModule } from './api/user/user.module';
     }),
     Auth0Module,
     RepositoryModule,
-    TodoModule,
+    TaskModule,
     UserModule,
   ],
   controllers: [AppController],

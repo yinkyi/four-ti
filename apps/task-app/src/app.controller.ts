@@ -3,10 +3,10 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly todoAppService: AppService) {}
+  constructor(private readonly taskAppService: AppService) {}
 
   @Get()
   getHello(): string {
-    return this.todoAppService.getHello();
+    return this.taskAppService.getHello();
   }
 }

@@ -12,7 +12,7 @@ async function main() {
       auth0UserId: 'google-oauth2|107163367946670487684',
       name: 'yin',
       email: 'yinyinkyi90@gmail.com',
-      todos: {
+      tasks: {
         create: [
           {
             title: 'First Task',

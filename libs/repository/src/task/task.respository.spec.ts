@@ -1,24 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaModule } from '@app/repository/prisma/prisma.module';
-import { TodoRepository } from '@app/repository/todo/todo.repository';
+import { TaskRepository } from '@app/repository/task/task.repository';
 import {
   CreateToDoInterface,
   UpdateToDoInterface,
-} from '@app/repository/todo/todo.model';
-import { Todo } from '@prisma/client';
+} from '@app/repository/task/task.model';
+import { Task } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { NotFoundException } from '@nestjs/common';
-describe('TodoRepository', () => {
-  let todo: Todo;
-  let repository: TodoRepository;
+describe('TaskRepository', () => {
+  let task: Task;
+  let repository: TaskRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [PrismaModule],
-      providers: [TodoRepository],
+      providers: [TaskRepository],
     }).compile();
 
-    repository = module.get<TodoRepository>(TodoRepository);
+    repository = module.get<TaskRepository>(TaskRepository);
   });
 
   it('should be defined', () => {
@@ -29,17 +29,17 @@ describe('TodoRepository', () => {
     it('should save model', async () => {
       const createDto: CreateToDoInterface = {
         title: 'assignment',
-        content: 'Four-ti Todo assignment',
+        content: 'Four-ti Task assignment',
         userId: 'ec74f929-12e6-5248-8aa0-2d6f1e0f4e6c',
       };
-      const createdTodo = await repository.create(createDto);
-      todo = createdTodo;
-      expect(todo.id).toBeDefined();
+      const createdTask = await repository.create(createDto);
+      task = createdTask;
+      expect(task.id).toBeDefined();
     });
     it('should throw error incorrect UUIDs format', async () => {
       const createDto: CreateToDoInterface = {
         title: 'assignment',
-        content: 'Four-ti Todo assignment',
+        content: 'Four-ti Task assignment',
         userId: '1ac1700d-fake',
       };
       try {
@@ -56,7 +56,7 @@ describe('TodoRepository', () => {
     it('should throw error foreign key constraint', async () => {
       const createDto: CreateToDoInterface = {
         title: 'assignment',
-        content: 'Four-ti Todo assignment',
+        content: 'Four-ti Task assignment',
         userId: 'ec74f929-12e6-5248-8aa0-2d6f1e0f4e6c',
       };
       try {
@@ -76,9 +76,9 @@ describe('TodoRepository', () => {
       const updateObj: UpdateToDoInterface = {
         title: 'gogo update',
       };
-      const updatedTodo = await repository.updateToDo(todo.id, updateObj);
+      const updatedTask = await repository.updateToDo(task.id, updateObj);
 
-      expect(updatedTodo.title).toEqual(updateObj.title);
+      expect(updatedTask.title).toEqual(updateObj.title);
     });
 
     it('should throw error updated id does not exist', async () => {
@@ -109,11 +109,11 @@ describe('TodoRepository', () => {
     });
     it('should search with title', async () => {
       const paginatedData = await repository.paginate(1, 10, {
-        title: todo.title,
+        title: task.title,
       });
       paginatedData.items.find((item) => expect(item).toEqual(item));
     });
-    it('should get completed todo', async () => {
+    it('should get completed task', async () => {
       const paginatedData = await repository.paginate(1, 10, {
         completed: true,
       });
@@ -126,8 +126,8 @@ describe('TodoRepository', () => {
 
   describe('delete', () => {
     it('should soft delete', async () => {
-      const deleted = await repository.remove(todo.id);
-      expect(deleted.id).toEqual(todo.id);
+      const deleted = await repository.remove(task.id);
+      expect(deleted.id).toEqual(task.id);
       expect(deleted.deletedAt).toBeDefined();
     });
   });

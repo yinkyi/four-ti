@@ -1,9 +1,9 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateTodoDto } from './create-todo.dto';
+import { CreateTaskDto } from './create-task.dto';
 import { IsBoolean, IsOptional } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 
-export class UpdateTodoDto extends PartialType(CreateTodoDto) {
+export class UpdateTaskDto extends PartialType(CreateTaskDto) {
   @ApiPropertyOptional({
     description: 'complete the task',
     example: true,

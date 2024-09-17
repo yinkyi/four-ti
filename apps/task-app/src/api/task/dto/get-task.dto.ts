@@ -3,9 +3,9 @@ import { PaginationDto } from '../../../common/dto/pagination.dto';
 import { Transform } from 'class-transformer';
 import { IsString, IsBoolean, IsOptional } from 'class-validator';
 
-export class GetTodoDto extends PaginationDto {
+export class GetTaskDto extends PaginationDto {
   @ApiPropertyOptional({
-    description: 'The title of the todo',
+    description: 'The title of the task',
   })
   @IsString()
   @IsOptional()

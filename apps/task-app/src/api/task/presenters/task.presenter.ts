@@ -1,7 +1,7 @@
-import { UserPresenter } from './user.presenter';
+import { UserPresenter } from '../../user/presenters/user.presenter';
 import { Expose } from 'class-transformer';
 
-export class TodoPresenter {
+export class TaskPresenter {
   @Expose()
   id: string;
 

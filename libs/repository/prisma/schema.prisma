@@ -20,13 +20,13 @@ model User {
   auth0UserId   String      @unique @map("auth0_user_id")
   name          String
   email         String   @unique
-  todos         Todo[]
+  tasks         Task[]
   createdAt     DateTime    @map("created_at") @default(now())
   updatedAt     DateTime    @map("updated_at") @updatedAt
   deletedAt     DateTime?   @map("deleted_at")
 }
 
-model Todo {
+model Task {
   id            String      @id @default(uuid()) @db.Uuid
   title         String
   content       String?
