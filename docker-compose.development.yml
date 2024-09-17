@@ -22,7 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: four-ti-backend/four-ti
+    image: foufourr-ti-backend/four-ti
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     container_name: four-ti
