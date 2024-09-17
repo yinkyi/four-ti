@@ -43,7 +43,11 @@ $ make start SERVICE=four-ti
 $ make build
 $ npm install
 
+```
 
+## Test
+
+$ npm run test
 
 ```
 
@@ -145,9 +149,18 @@ This project involves developing a task management application with authenticati
   - Connect task management forms with backend APIs.
   - Handle API responses and display tasks.
 
+## Testing
+
+### Backend Tests
+
+Jest is used for backend testing. To run the tests:
+
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+```
 
 ```
 
