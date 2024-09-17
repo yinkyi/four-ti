@@ -26,22 +26,21 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation using docker (create Database)
+## Installation using docker
 
 ```bash
-$ make start SERVICE=four-ti-db
-$ npm run prisma:migrate
-$ npm run prisma:seed
-
+$ npm run prisma:generate
+$ make start
+$ make build
+$ npm install
 
 ```
 
-## Installation using docker (create App)
+## Migration
 
 ```bash
-$ make start SERVICE=four-ti
-$ make build
-$ npm install
+$ npm run prisma:migrate
+$ npm run prisma:seed
 
 ```
 
@@ -49,6 +48,14 @@ $ npm install
 
 ```bash
 $ npm run test
+
+```
+
+## Support
+
+### Swagger
+
+    http://localhost:8000/api
 
 ```
 
@@ -159,6 +166,8 @@ Jest is used for backend testing. To run the tests:
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+```
 
 ```
 

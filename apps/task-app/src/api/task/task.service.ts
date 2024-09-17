@@ -12,13 +12,14 @@ export class TaskService {
     return await this.repo.create({ ...createTaskDto, userId });
   }
 
-  async findAll(getTaskDto: GetTaskDto) {
+  async findAll(getTaskDto: GetTaskDto, userId: string) {
     return await this.repo.paginate(
       getTaskDto.page,
       getTaskDto.limit,
       {
         title: getTaskDto.title,
         completed: getTaskDto.completed,
+        userId,
       },
       {
         createdAt: 'desc',

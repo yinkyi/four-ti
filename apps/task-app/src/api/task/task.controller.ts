@@ -47,11 +47,14 @@ export class TaskController extends AbstractController {
   }
 
   @Get()
-  async findAll(@Query() getTaskDto: GetTaskDto) {
-    return await this.taskService.findAll({
-      ...getTaskDto,
-      route: this.url,
-    });
+  async findAll(@Query() getTaskDto: GetTaskDto, @GetUser() user: AuthUserI) {
+    return await this.taskService.findAll(
+      {
+        ...getTaskDto,
+        route: this.url,
+      },
+      user.userId,
+    );
   }
 
   @Get(':id')
