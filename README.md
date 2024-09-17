@@ -145,30 +145,6 @@ This project involves developing a task management application with authenticati
   - Connect task management forms with backend APIs.
   - Handle API responses and display tasks.
 
-## Setup and Installation
-
-### Backend
-
-1. Clone the repository.
-2. Install dependencies: `npm install`.
-3. Set up environment variables (e.g., database connection, Auth0 configuration).
-4. Run migrations to set up the database schema.
-5. Start the server: `npm start`.
-
-### Frontend
-
-1. Clone the repository.
-2. Install dependencies: `npm install`.
-3. Configure Auth0 settings.
-4. Start the development server: `npm start`.
-
-## Contributing
-
-We welcome contributions to improve the project. Please follow these guidelines:
-
-- Fork the repository.
-- Create a feature branch (`git checkout -b feature/you
-
 ## License
 
 Nest is [MIT licensed](LICENSE).
