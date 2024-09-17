@@ -33,7 +33,6 @@ export class UserController {
       connection: AuthConnectionType.DATABASE,
       client_id: option.clientId,
       client_secret: option.client_secret,
-      audience: 'https://30stf-api.demo.com',
     });
     const decoded = await this.auth0Service.decodeIdToken(user['id_token']);
 

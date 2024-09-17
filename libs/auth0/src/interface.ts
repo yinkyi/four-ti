@@ -27,7 +27,6 @@ export interface LoginInterface extends ClinetKeyInterface {
   connection: AuthConnectionType;
   username: string;
   password: string;
-  audience: string;
 }
 
 export interface PasswordlessAuthTokenInterface extends ClinetKeyInterface {

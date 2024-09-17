@@ -16,11 +16,4 @@ export class LoginDto extends ClientInfo {
   })
   @IsString()
   password: string;
-
-  @ApiProperty({
-    description: 'audience',
-    example: 'https://30stf-api.demo.com',
-  })
-  @IsString()
-  audience: string;
 }

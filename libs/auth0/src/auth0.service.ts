@@ -160,6 +160,7 @@ export class Auth0Service {
         {
           ...loginInterface,
           scope: 'openid profile email',
+          audience: process.env.AUTH0_API_AUDIENCE,
         },
         {
           baseURL: process.env.AUTH0_DOMAIN_URL,

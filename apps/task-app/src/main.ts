@@ -45,7 +45,7 @@ async function bootstrap() {
   if (process.env.NODE_ENV !== 'production') {
     const config = new DocumentBuilder()
       .addBearerAuth()
-      .setTitle('thirtySTF')
+      .setTitle('FourTi')
       .setDescription('welcome!')
       .setVersion('1.0')
       .build();
