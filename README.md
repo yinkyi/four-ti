@@ -47,9 +47,7 @@ $ npm install
 
 ```
 
-## Stories
-
-# Project README
+# Project Stories
 
 ## Overview
 
