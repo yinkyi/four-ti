@@ -15,14 +15,14 @@ export class PaginationDto {
 
   @ApiProperty({
     type: Number,
-    default: 20,
+    default: 10,
     required: false,
   })
   @IsOptional()
   @Max(100)
   @IsInt()
   @Type(() => Number)
-  limit: number = 20;
+  limit: number = 10;
 
   @IsOptional()
   @IsIn(['asc', 'desc', 'ASC', 'DESC'])
