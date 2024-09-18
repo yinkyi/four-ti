@@ -19,10 +19,8 @@ export class UserRepository extends GenericRepository<
   async saveUserInfo(createUserInfo: CreateUserModel): Promise<User> {
     const existingUser = await this.prisma.user.findFirst({
       where: {
-        OR: [
-          { auth0UserId: createUserInfo.auth0UserId },
-          { email: createUserInfo.email },
-        ],
+        auth0UserId: createUserInfo.auth0UserId,
+        email: createUserInfo.email,
       },
     });
     if (existingUser) {
